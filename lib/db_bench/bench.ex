@@ -44,16 +44,26 @@ defmodule DbBench.Api.BenchMysqlotp do
   end
 end
 
+defmodule DbBench.Api.BenchMysqlex do
+  use Maru.Router
+  version "mysqlex", using: :path
+  get do
+    res = :mysql_poolboy.query(:my_pool, "select id,name from domains")
+    "It works Mysqlex" |> text
+  end
+
+end
 defmodule DbBench.Api.BenchEcto do
   import Ecto.Query
   use Maru.Router
   version "ecto", using: :path
   desc "get v1"
   get do
-    DbBench.Repo.all(
+    res = DbBench.Repo.all(
       from d in Domain,
       select: d.name
     ) 
+    #IO.inspect res 
     "It works Ecto" |> text
   end
 end

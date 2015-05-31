@@ -7,6 +7,7 @@ defmodule DbBench.Api do
   mount DbBench.Api.BenchEpgsql
   mount DbBench.Api.BenchEmysql
   mount DbBench.Api.BenchMysqlotp
+  mount DbBench.Api.BenchMysqlex
   mount DbBench.Api.BenchRedis
 
   def error(conn, err) do
