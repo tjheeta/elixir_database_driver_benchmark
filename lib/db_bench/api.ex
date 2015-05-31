@@ -9,6 +9,7 @@ defmodule DbBench.Api do
   mount DbBench.Api.BenchMysqlotp
   mount DbBench.Api.BenchMysqlex
   mount DbBench.Api.BenchRedis
+  mount DbBench.Api.BenchMariaex
 
   def error(conn, err) do
     "ERROR: #{inspect err}" |> text(500)

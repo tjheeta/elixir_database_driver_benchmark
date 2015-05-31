@@ -1,5 +1,3 @@
-
-
 defmodule DbBench.Api.BenchPostgrex do
   use Maru.Router
   version "postgrex", using: :path
@@ -48,11 +46,22 @@ defmodule DbBench.Api.BenchMysqlex do
   use Maru.Router
   version "mysqlex", using: :path
   get do
-    res = :mysql_poolboy.query(:my_pool, "select id,name from domains")
+    {:ok, res} = DbBench.MysqlexSupervisor.q( "select id, name from domains ")
+    #IO.inspect res
     "It works Mysqlex" |> text
   end
-
 end
+
+defmodule DbBench.Api.BenchMariaex do
+  use Maru.Router
+  version "mariaex", using: :path
+  get do
+    {:ok, res} = DbBench.MariaexSupervisor.q( "select id, name from domains ")
+    #IO.inspect res
+    "It works Mariaex" |> text
+  end
+end
+
 defmodule DbBench.Api.BenchEcto do
   import Ecto.Query
   use Maru.Router

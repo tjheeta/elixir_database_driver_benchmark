@@ -27,6 +27,8 @@ defmodule DbBench.Supervisor do
        worker(DbBench.RedisSupervisor,[]),
        :mysql_poolboy.child_spec(:my_pool, mysql_pool_options, mysql_pool_args),
        worker(DbBench.PostgrexSupervisor,[]),
+       worker(DbBench.MysqlexSupervisor,[]),
+       worker(DbBench.MariaexSupervisor,[]),
        worker(DbBench.Repo,[])
     ]
     supervise(children, strategy: :one_for_one)
