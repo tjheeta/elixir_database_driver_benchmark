@@ -32,7 +32,8 @@ defmodule DbBench.Mixfile do
       {:maru, "~> 0.2.9"},
       {:eredis, "~> 1.0.7"},
       {:uuid, "~> 1.0.0"},
-      {:ecto, github: "tjheeta/ecto", ref: "master"},
+      #{:ecto, "~> 0.12-rc"},
+      {:ecto, github: "tjheeta/ecto", branch: "mysqlex_conversion"},
       {:postgrex, "~> 0.8.1"},
       {:mysql, github: "mysql-otp/mysql-otp", tag: "1.0.0" , override: true},
       #{:mariaex, github: "xerions/mariaex"},
@@ -44,7 +45,7 @@ defmodule DbBench.Mixfile do
       {:recon, github: "ferd/recon"},
       {:mysql_poolboy, github: "mysql-otp/mysql-otp-poolboy"},
       {:mydsl, github: "falood/mydsl"},
-      {:mysqlex, github: "tjheeta/mysqlex"},
+      {:mysqlex, "~> 0.0.1"},
       {:exsync, "~> 0.0.3", only: :dev}
     ]
   end
